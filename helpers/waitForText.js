@@ -1,6 +1,3 @@
-// import { should } from "chai";
-// should();
-
 export async function waitForText(element, expectedText, timeout = 5000) {
   await element.waitUntil(
     async function () {

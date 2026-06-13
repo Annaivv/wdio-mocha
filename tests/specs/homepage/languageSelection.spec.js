@@ -1,4 +1,4 @@
-import { expect, assert, should } from "chai";
+import { should } from "chai";
 import { pages } from "../../../po/pages";
 import { waitForText } from "../../../helpers/waitForText";
 import { expectedTitles } from "../../../data/expectedTitles";
