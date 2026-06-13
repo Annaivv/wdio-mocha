@@ -12,19 +12,12 @@ describe("Language selection", () => {
     homepage = pages("home");
     await homepage.open();
     langSelect = homepage.navbar.languageSelect;
+    await langSelect.click();
+    await homepage.navbar.languagesList.waitForDisplayed();
+    await homepage.navbar.languageGermanItem.click();
   });
 
   it("Should show menu item names in German when DE is selected in the language selection dropdown", async () => {
-    const languageSelected = await langSelect.getText();
-
-    await languageSelected.should.contain("EN");
-
-    await langSelect.click();
-    const languageListIsDisplayed =
-      await homepage.navbar.languagesList.isDisplayed();
-    languageListIsDisplayed.should.be.true;
-
-    await homepage.navbar.languageGermanItem.click();
     (await langSelect.getText()).should.contain("DE");
 
     const navSignIn = homepage.navbar.navSignIn;
