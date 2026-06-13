@@ -6,7 +6,9 @@
     "@wdio/local-runner": "^9.28.0",
     "@wdio/mocha-framework": "^9.28.0",
     "@wdio/spec-reporter": "^9.28.0",
-    "@wdio/visual-service": "^9.2.3"
+    "@wdio/visual-service": "^9.2.3",
+    "chai": "^6.2.2",
+    "mocha": "^11.7.6"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js"
