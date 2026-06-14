@@ -25,7 +25,7 @@ export class SignupForm extends BaseComponent {
       password: 'input[data-test="password"]',
     };
 
-    return this.rootEl.$(selectors[name.toLowerCase()]);
+    return this.rootEl.$(selectors[name]);
   }
 
   get signupBtn() {

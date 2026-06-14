@@ -8,6 +8,6 @@ export const userData = {
   city: "Chicago",
   state: "Illinois",
   phone: 13125096995,
-  email: "newmail@mail.com",
+  email: "newmail1@mail.com",
   password: "qwe6543$21rtY",
 };
