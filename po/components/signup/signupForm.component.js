@@ -35,4 +35,10 @@ export class SignupForm extends BaseComponent {
   get countriesSelect() {
     return this.rootEl.$('select[data-test="country"]');
   }
+
+  get existingEmailErrorMsg() {
+    return this.rootEl.$(
+      '//div[text()="A customer with this email address already exists."]',
+    );
+  }
 }
