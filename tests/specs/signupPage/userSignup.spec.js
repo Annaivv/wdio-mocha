@@ -2,9 +2,10 @@ import { expect } from "chai";
 import { pages } from "../../../po/pages";
 import { userData } from "../../../data/userData";
 import { waitForUrl } from "../../../helpers/waitForUrl";
+import { generateUniqueEmail } from "../../../helpers/generateUniqueEmail";
 
 describe("New user signup", () => {
-  const uniqueEmail = `test${Date.now()}@newmail.com`;
+  const uniqueEmail = generateUniqueEmail();
   const inputNames = Object.keys(userData).filter((name) => name !== "email");
   const loginPageUrl = "https://practicesoftwaretesting.com/auth/login";
   const signupPageUrl = "https://practicesoftwaretesting.com/auth/register";
