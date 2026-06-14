@@ -33,5 +33,9 @@ describe("Registered user login", () => {
 
     const newUrl = await waitForUrl(USER_ACCOUNT_URL);
     expect(newUrl).to.be.true;
+
+    const userName = await $("#menu").getText();
+    expect(userName).to.include(testUser.firstName);
+    expect(userName).to.include(testUser.lastName);
   });
 });
