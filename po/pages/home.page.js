@@ -1,5 +1,5 @@
 import { Navbar } from "../components";
-import { ProductList } from "../components/productList/productList.component";
+import { ProductList } from "../components";
 import { BasePage } from "./base.page";
 
 export class Homepage extends BasePage {
