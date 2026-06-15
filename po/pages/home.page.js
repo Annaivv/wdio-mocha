@@ -1,4 +1,9 @@
-import { Navbar, SearchComponent, ProductList } from "../components";
+import {
+  Navbar,
+  SearchComponent,
+  ProductList,
+  CategoriesComponent,
+} from "../components";
 import { BasePage } from "./base.page";
 
 export class Homepage extends BasePage {
@@ -7,5 +12,6 @@ export class Homepage extends BasePage {
     this.navbar = new Navbar();
     this.productList = new ProductList();
     this.search = new SearchComponent();
+    this.categories = new CategoriesComponent();
   }
 }

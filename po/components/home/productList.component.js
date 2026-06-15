@@ -8,4 +8,8 @@ export class ProductList extends BaseComponent {
   get productTitles() {
     return $$(".card-title");
   }
+
+  get listByCategories() {
+    return $('div[data-test="filter_completed"]');
+  }
 }
