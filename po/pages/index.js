@@ -1,10 +1,11 @@
 import { Homepage } from "./home.page";
 import { SignupPage } from "./signup.page";
 import { LoginPage } from "./login.page";
+import { ProductPage } from "./product.page";
 
 /**
- * @param {"home" | "signup" | "login"} name
- * @returns {Homepage | SignupPage | LoginPage}
+ * @param {"home" | "signup" | "login" | "product"} name
+ * @returns {Homepage | SignupPage | LoginPage | ProductPage}
  */
 
 function pages(name) {
@@ -12,8 +13,9 @@ function pages(name) {
     home: new Homepage(),
     signup: new SignupPage(),
     login: new LoginPage(),
+    product: new ProductPage(),
   };
   return items[name.toLowerCase()];
 }
 
-export { Homepage, SignupPage, LoginPage, pages };
+export { Homepage, SignupPage, LoginPage, ProductPage, pages };

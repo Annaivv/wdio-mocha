@@ -1,7 +1,12 @@
 import { expect, assert } from "chai";
 import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { generateUniqueEmail, loginUser, waitForUrl } from "../../../helpers";
+import {
+  generateUniqueEmail,
+  loginUser,
+  registerUser,
+  waitForUrl,
+} from "../../../helpers";
 import { pages } from "../../../po/pages";
 
 describe("Add product to cart", () => {
@@ -16,6 +21,8 @@ describe("Add product to cart", () => {
       ...userData,
       email: generateUniqueEmail(),
     };
+    await registerUser(testUser);
+    await pages("login").open();
     await loginUser(testUser);
   });
   it("Product should be in the cart when added by logged in user", async () => {
@@ -26,10 +33,10 @@ describe("Add product to cart", () => {
     await homepage.open();
 
     await browser.waitUntil(
-      async () => (await $$("a.card[data-test]")).length > 0,
+      async () => (await homepage.productList.productCards).length > 0,
       { timeout: 5000, timeoutMsg: "Product cards not found" },
     );
-    const cards = await $$("a.card[data-test]");
+    const cards = await homepage.productList.productCards;
 
     const dataTest = await cards[1].getAttribute("data-test");
     const productID = dataTest.split("-")[1];
@@ -42,7 +49,10 @@ describe("Add product to cart", () => {
     const isUrlCorrect = await waitForUrl(productUrl);
     assert.isTrue(isUrlCorrect);
 
-    await $('button[data-test="add-to-cart"]').click();
+    const productPage = pages("product");
+    await productPage.open(productID);
+
+    await productPage.product.addToCartBtn.click();
     assert.exists(addProductSuccessMsg);
 
     const cart = homepage.navbar.shoppingCart;

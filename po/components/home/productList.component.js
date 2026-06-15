@@ -1,6 +1,4 @@
-import { BaseComponent } from "../common/base.component";
-
-export class ProductList extends BaseComponent {
+export class ProductList {
   get productCards() {
     return $$("a.card");
   }

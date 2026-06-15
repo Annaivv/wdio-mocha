@@ -36,4 +36,8 @@ export class Navbar extends BaseComponent {
   get cartQuantity() {
     return this.rootEl.$('span[data-test="cart-quantity"]');
   }
+
+  get userMenu() {
+    return this.rootEl.$('[data-test="nav-menu"]');
+  }
 }
