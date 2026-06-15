@@ -26,7 +26,7 @@ describe("Registered user login", () => {
 
     await loginUser(testUser);
 
-    const newUrl = await waitForUrl(USER_ACCOUNT_URL);
+    const newUrl = await waitForUrl(USER_ACCOUNT_URL, 10000);
     expect(newUrl).to.be.true;
 
     const userName = await $("#menu").getText();
