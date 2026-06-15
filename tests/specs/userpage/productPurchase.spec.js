@@ -1,9 +1,7 @@
 import { expect, assert } from "chai";
 import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { generateUniqueEmail } from "../../../helpers/generateUniqueEmail";
-import { loginUser } from "../../../helpers/loginUser";
-import { waitForUrl } from "../../../helpers/waitForUrl";
+import { generateUniqueEmail, loginUser, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
 
 describe("Add product to cart", () => {

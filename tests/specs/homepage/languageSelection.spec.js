@@ -1,6 +1,6 @@
 import { should } from "chai";
 import { pages } from "../../../po/pages";
-import { waitForText } from "../../../helpers/waitForText";
+import { waitForText } from "../../../helpers";
 import { expectedTitles } from "../../../data/expectedTitles";
 
 should();

@@ -2,10 +2,12 @@ import { expect } from "chai";
 import { pages } from "../../../po/pages";
 import { LOGIN_PAGE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
 import { userData } from "../../../data/userData";
-import { waitForUrl } from "../../../helpers/waitForUrl";
-import { generateUniqueEmail } from "../../../helpers/generateUniqueEmail";
-import { registerUser } from "../../../helpers/registerUser";
-import { loginUser } from "../../../helpers/loginUser";
+import {
+  waitForUrl,
+  generateUniqueEmail,
+  registerUser,
+  loginUser,
+} from "../../../helpers";
 
 describe("Registered user login", () => {
   let testUser;

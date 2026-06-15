@@ -23,7 +23,7 @@ describe("Product search", () => {
       const titleTexts = await Promise.all(
         await testCardTitles.map((title) => title.getText()),
       );
-      console.log(titleTexts);
+
       expect(titleTexts.length).to.be.above(0);
       titleTexts.forEach((text) =>
         expect(text.trim().toLowerCase()).to.include(searchValue),
