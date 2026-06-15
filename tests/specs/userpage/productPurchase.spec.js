@@ -8,6 +8,7 @@ import {
   waitForUrl,
 } from "../../../helpers";
 import { pages } from "../../../po/pages";
+import { setupHomepage } from "../../../helpers/setupHomepage";
 
 describe("Add product to cart", () => {
   let testUser;
@@ -15,7 +16,7 @@ describe("Add product to cart", () => {
   let homepage;
 
   before(async () => {
-    homepage = pages("home");
+    homepage = await setupHomepage();
     productList = homepage.productList;
     testUser = {
       ...userData,

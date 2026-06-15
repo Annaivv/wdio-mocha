@@ -2,6 +2,7 @@ import { should } from "chai";
 import { pages } from "../../../po/pages";
 import { waitForText } from "../../../helpers";
 import { expectedTitles } from "../../../data/expectedTitles";
+import { setupHomepage } from "../../../helpers/setupHomepage";
 
 should();
 
@@ -10,8 +11,7 @@ describe("Language selection", () => {
   let langSelect;
 
   beforeEach(async () => {
-    homepage = pages("home");
-    await homepage.open();
+    homepage = await setupHomepage();
     langSelect = homepage.navbar.languageSelect;
     await langSelect.click();
     await homepage.navbar.languagesList.waitForDisplayed();

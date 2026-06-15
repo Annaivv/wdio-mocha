@@ -1,12 +1,12 @@
 import { expect } from "chai";
 import { pages } from "../../../po/pages";
+import { setupHomepage } from "../../../helpers/setupHomepage";
 
 describe("Filter products by category", () => {
   let homepage;
 
   before(async () => {
-    homepage = pages("home");
-    await homepage.open();
+    homepage = await setupHomepage();
   });
 
   it("List of products that belong to the chosen subcategory should be displayed", async () => {
