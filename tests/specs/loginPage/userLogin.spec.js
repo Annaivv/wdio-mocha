@@ -17,9 +17,6 @@ describe("Registered user login", () => {
       email: generateUniqueEmail(),
     };
     loginForm = pages("login").loginForm;
-
-    await registerUser(testUser);
-
     await pages("login").open();
   });
 
