@@ -1,7 +1,7 @@
 import { expect, assert } from "chai";
 import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { generateUniqueEmail, loginUser, waitForUrl } from "../../../helpers";
+import { generateUniqueEmail, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
 import { setupHomepage } from "../../../helpers/setupHomepage";
 
@@ -18,8 +18,8 @@ describe("Add product to cart", () => {
       email: generateUniqueEmail(),
     };
     await pages("signup").register(testUser);
-    await pages("login").open();
-    await loginUser(testUser);
+    //await pages("login").open();
+    await pages("login").login(testUser);
   });
   it("Product should be in the cart when added by logged in user", async () => {
     const userAccountUrl = await waitForUrl(USER_ACCOUNT_URL);

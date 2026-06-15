@@ -6,4 +6,11 @@ export class LoginPage extends BasePage {
     super("/auth/login");
     this.loginForm = new LoginForm();
   }
+
+  async login({ email, password }) {
+    await this.open();
+    await this.loginForm.input("email").setValue(email);
+    await this.loginForm.input("password").setValue(password);
+    await this.loginForm.loginBtn.click();
+  }
 }

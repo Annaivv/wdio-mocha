@@ -2,11 +2,7 @@ import { expect } from "chai";
 import { pages } from "../../../po/pages";
 import { USER_ACCOUNT_URL } from "../../../data/constants";
 import { userData } from "../../../data/userData";
-import {
-  waitForUrl,
-  generateUniqueEmail,
-  loginUser,
-} from "../../../helpers";
+import { waitForUrl, generateUniqueEmail } from "../../../helpers";
 
 describe("Registered user login", () => {
   let testUser;
@@ -21,7 +17,7 @@ describe("Registered user login", () => {
   });
 
   it("Registered user is redirected to his account page when logged in with his email and password", async () => {
-    await loginUser(testUser);
+    await pages("login").login(testUser);
 
     const newUrl = await waitForUrl(USER_ACCOUNT_URL, 10000);
     expect(newUrl).to.be.true;
