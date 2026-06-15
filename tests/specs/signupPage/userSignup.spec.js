@@ -1,11 +1,7 @@
 import { expect } from "chai";
 import { pages } from "../../../po/pages";
 import { userData } from "../../../data/userData";
-import {
-  waitForUrl,
-  generateUniqueEmail,
-  registerUser,
-} from "../../../helpers";
+import { waitForUrl, generateUniqueEmail } from "../../../helpers";
 import { LOGIN_PAGE_URL, SIGNUP_PAGE_URL } from "../../../data/constants";
 
 describe("New user signup", () => {
@@ -17,7 +13,7 @@ describe("New user signup", () => {
       email: generateUniqueEmail(),
     };
 
-    await registerUser(testUser);
+    await pages("signup").register(testUser);
   });
 
   it("Login form is opened after signup with valid user data in all mandatory fields", async () => {
@@ -26,7 +22,7 @@ describe("New user signup", () => {
   });
 
   it("User cannot register with already registered email", async () => {
-    await registerUser(testUser);
+    await pages("signup").register(testUser);
 
     const isDisplayed =
       await pages("signup").signupForm.existingEmailErrorMsg.waitForDisplayed();

@@ -1,12 +1,7 @@
 import { expect, assert } from "chai";
 import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import {
-  generateUniqueEmail,
-  loginUser,
-  registerUser,
-  waitForUrl,
-} from "../../../helpers";
+import { generateUniqueEmail, loginUser, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
 import { setupHomepage } from "../../../helpers/setupHomepage";
 
@@ -22,7 +17,7 @@ describe("Add product to cart", () => {
       ...userData,
       email: generateUniqueEmail(),
     };
-    await registerUser(testUser);
+    await pages("signup").register(testUser);
     await pages("login").open();
     await loginUser(testUser);
   });

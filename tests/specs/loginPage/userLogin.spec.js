@@ -5,7 +5,6 @@ import { userData } from "../../../data/userData";
 import {
   waitForUrl,
   generateUniqueEmail,
-  registerUser,
   loginUser,
 } from "../../../helpers";
 
@@ -17,7 +16,7 @@ describe("Registered user login", () => {
       ...userData,
       email: generateUniqueEmail(),
     };
-    await registerUser(testUser);
+    await pages("signup").register(testUser);
     await pages("login").open();
   });
 
