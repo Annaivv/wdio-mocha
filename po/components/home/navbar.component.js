@@ -5,6 +5,10 @@ export class Navbar extends BaseComponent {
     super("#navbarSupportedContent");
   }
 
+  get homeNavLink() {
+    return this.rootEl.$('[data-test="nav-home"]');
+  }
+
   get languageSelect() {
     return this.rootEl.$('[data-test="language-select"]');
   }
@@ -23,5 +27,13 @@ export class Navbar extends BaseComponent {
 
   get navCategories() {
     return this.rootEl.$('[data-test="nav-categories"]');
+  }
+
+  get shoppingCart() {
+    return this.rootEl.$('[data-test="nav-cart"]');
+  }
+
+  get cartQuantity() {
+    return this.rootEl.$('span[data-test="cart-quantity"]');
   }
 }
