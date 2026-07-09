@@ -1,17 +1,9 @@
-import { BaseComponent } from "../common/base.component";
+import { BaseForm } from "../common/base-form.component";
 
-export class SignupForm extends BaseComponent {
+export class SignupForm extends BaseForm {
   constructor() {
     super(".auth-form");
-  }
-
-  /**
-   *
-   * @param {"firstName" | "lastName" | "birthDate"| "postalCode" | "houseNumber" | "street" | "city" | "state" | "phone" | "email" | "password"} name
-   * @returns {Promise<WebdriverIO.Element>}
-   */
-  input(name) {
-    const selectors = {
+    this.selectors = {
       firstName: 'input[data-test="first-name"]',
       lastName: 'input[data-test="last-name"]',
       birthDate: 'input[data-test="dob"]',
@@ -24,8 +16,6 @@ export class SignupForm extends BaseComponent {
       email: 'input[data-test="email"]',
       password: 'input[data-test="password"]',
     };
-
-    return this.rootEl.$(selectors[name]);
   }
 
   get signupBtn() {

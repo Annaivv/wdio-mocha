@@ -1,20 +1,12 @@
-import { BaseComponent } from "../common/base.component";
+import { BaseForm } from "../common/base-form.component";
 
-export class LoginForm extends BaseComponent {
+export class LoginForm extends BaseForm {
   constructor() {
     super('form[data-test="login-form"]');
-  }
-
-  /**
-   * @param {"email" | "password"} name
-   * @returns {Promise<WebdriverIO.Element>}
-   */
-  input(name) {
-    const selectors = {
+    this.selectors = {
       email: 'input[data-test="email"]',
       password: 'input[data-test="password"]',
     };
-    return this.rootEl.$(selectors[name]);
   }
 
   get loginBtn() {
