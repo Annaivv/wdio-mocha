@@ -19,9 +19,9 @@ describe("Product search", () => {
       await homepage.productList.listAfterSearch.waitForDisplayed();
       expect(homepage.productList.listAfterSearch).to.not.be.undefined;
 
-      const testCardTitles = await homepage.productList.productTitles.slice();
+      const cardTitles = await homepage.productList.productTitles.slice();
       const titleTexts = await Promise.all(
-        testCardTitles.map((title) => title.getText()),
+        cardTitles.map((title) => title.getText()),
       );
 
       expect(titleTexts.length).to.be.above(0);

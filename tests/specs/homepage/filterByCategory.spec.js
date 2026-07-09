@@ -13,7 +13,7 @@ describe("Filter products by category", () => {
     expect(subcategory).to.not.be.undefined;
 
     const subcatName = await subcategory.getText();
-    const catValueToCheck = subcatName.trim().toLowerCase();
+    const subcatValue = subcatName.trim().toLowerCase();
 
     await subcategory.click();
 
@@ -27,7 +27,7 @@ describe("Filter products by category", () => {
     expect(titleTexts.length).to.be.above(0);
 
     titleTexts.forEach((text) =>
-      expect(text.trim().toLowerCase()).to.have.string(catValueToCheck),
+      expect(text.trim().toLowerCase()).to.have.string(subcatValue),
     );
   });
 });
