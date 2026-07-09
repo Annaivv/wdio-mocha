@@ -19,4 +19,9 @@ export class ProductList extends BaseComponent {
   get listByCategories() {
     return $('div[data-test="filter_completed"]');
   }
+
+  async getProductTitles() {
+    const titles = await this.productTitles.slice();
+    return Promise.all(titles.map((title) => title.getText()));
+  }
 }

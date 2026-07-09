@@ -32,10 +32,7 @@ describe("Language selection", () => {
   it("Tool categories on the sidebar remain in English when DE is selected in the language selection dropdown", async () => {
     (await langSelect.getText()).should.contain("DE");
 
-    const testCardTitles = await homepage.productList.productTitles.slice(0, 3);
-    const titleTexts = await Promise.all(
-      testCardTitles.map((title) => title.getText()),
-    );
+    const titleTexts = await homepage.productList.getProductTitles();
 
     expectedTitles.forEach((expected) => titleTexts.should.include(expected));
   });

@@ -20,10 +20,7 @@ describe("Filter products by category", () => {
     await homepage.productList.listByCategories.waitForDisplayed();
     expect(homepage.productList.listByCategories).to.not.be.undefined;
 
-    const testCardTitles = await homepage.productList.productTitles.slice();
-    const titleTexts = await Promise.all(
-      testCardTitles.map((title) => title.getText()),
-    );
+    const titleTexts = await homepage.productList.getProductTitles();
     expect(titleTexts.length).to.be.above(0);
 
     titleTexts.forEach((text) =>
