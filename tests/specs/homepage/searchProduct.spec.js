@@ -21,7 +21,7 @@ describe("Product search", () => {
 
       const testCardTitles = await homepage.productList.productTitles.slice();
       const titleTexts = await Promise.all(
-        await testCardTitles.map((title) => title.getText()),
+        testCardTitles.map((title) => title.getText()),
       );
 
       expect(titleTexts.length).to.be.above(0);
