@@ -1,10 +1,15 @@
-export class ProductList {
+import { BaseComponent } from "../common/base.component";
+
+export class ProductList extends BaseComponent {
+  constructor() {
+    super("div.container[data-test]");
+  }
   get productCards() {
-    return $$("a.card");
+    return this.rootEl.$$("a.card");
   }
 
   get productTitles() {
-    return $$(".card-title");
+    return this.rootEl.$$(".card-title");
   }
 
   get listAfterSearch() {
