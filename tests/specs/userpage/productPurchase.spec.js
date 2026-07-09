@@ -1,7 +1,6 @@
 import { expect, assert } from "chai";
-import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { generateUniqueEmail, waitForUrl } from "../../../helpers";
+import { createTestUser, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
 
 describe("Add product to cart", () => {
@@ -12,12 +11,8 @@ describe("Add product to cart", () => {
   before(async () => {
     homepage = await pages("home").setupHomepage();
     productList = homepage.productList;
-    testUser = {
-      ...userData,
-      email: generateUniqueEmail(),
-    };
+    testUser = createTestUser();
     await pages("signup").register(testUser);
-    //await pages("login").open();
     await pages("login").login(testUser);
   });
   it("Product should be in the cart when added by logged in user", async () => {

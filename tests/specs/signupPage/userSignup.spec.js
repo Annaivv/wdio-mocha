@@ -1,17 +1,13 @@
 import { expect } from "chai";
 import { pages } from "../../../po/pages";
-import { userData } from "../../../data/userData";
-import { waitForUrl, generateUniqueEmail } from "../../../helpers";
+import { waitForUrl, createTestUser } from "../../../helpers";
 import { LOGIN_PAGE_URL, SIGNUP_PAGE_URL } from "../../../data/constants";
 
 describe("New user signup", () => {
   let testUser;
 
   before(async () => {
-    testUser = {
-      ...userData,
-      email: generateUniqueEmail(),
-    };
+    testUser = createTestUser();
 
     await pages("signup").register(testUser);
   });
