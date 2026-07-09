@@ -37,19 +37,17 @@ describe("Add product to cart", () => {
 
     await cards[1].click();
     const isUrlCorrect = await waitForUrl(productUrl);
-    assert.isTrue(isUrlCorrect);
+    expect(isUrlCorrect).to.be.true;
 
     const productPage = pages("product");
     await productPage.open(productID);
 
     await productPage.product.addToCartBtn.click();
-    assert.exists(addProductSuccessMsg);
+    expect(addProductSuccessMsg).to.exist;
 
     const cart = homepage.navbar.shoppingCart;
     const cartQuantity = homepage.navbar.cartQuantity;
     const quantityText = await cartQuantity.getText();
-    assert.exists(cart);
-    assert.exists(cartQuantity);
-    assert.equal(quantityText, 1);
+    expect(quantityText).to.equal("1");
   });
 });
