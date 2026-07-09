@@ -3,7 +3,6 @@ import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
 import { generateUniqueEmail, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
-import { setupHomepage } from "../../../helpers/setupHomepage";
 
 describe("Add product to cart", () => {
   let testUser;
@@ -11,7 +10,7 @@ describe("Add product to cart", () => {
   let homepage;
 
   before(async () => {
-    homepage = await setupHomepage();
+    homepage = await pages("home").setupHomepage();
     productList = homepage.productList;
     testUser = {
       ...userData,
