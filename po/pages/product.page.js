@@ -7,6 +7,10 @@ export class ProductPage extends BasePage {
     this.product = new ProductCard();
   }
 
+  get addToCartSuccessMsg() {
+    return $("//div[text()='Product added to shopping cart.']");
+  }
+
   async open(productId) {
     await browser.url(`${this.url}/${productId}`);
   }

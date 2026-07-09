@@ -31,9 +31,6 @@ describe("Add product to cart", () => {
     const dataTest = await cards[1].getAttribute("data-test");
     const productID = dataTest.split("-")[1];
     const productUrl = `${PRODUCT_BASE_URL}/${productID}`;
-    const addProductSuccessMsg = $(
-      "//div[text()='Product added to shopping cart.']",
-    );
 
     await cards[1].click();
     const isUrlCorrect = await waitForUrl(productUrl);
@@ -43,7 +40,7 @@ describe("Add product to cart", () => {
     await productPage.open(productID);
 
     await productPage.product.addToCartBtn.click();
-    expect(addProductSuccessMsg).to.exist;
+    expect(productPage.addToCartSuccessMsg).to.exist;
 
     const cart = homepage.navbar.shoppingCart;
     const cartQuantity = homepage.navbar.cartQuantity;

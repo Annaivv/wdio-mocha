@@ -8,4 +8,8 @@ export class CategoriesComponent extends BaseComponent {
   get subCategories() {
     return this.rootEl.$$("label");
   }
+
+  get firstSubcategory() {
+    return this.rootEl.$("label");
+  }
 }

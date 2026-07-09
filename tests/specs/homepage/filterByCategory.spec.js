@@ -10,7 +10,7 @@ describe("Filter products by category", () => {
   });
 
   it("List of products that belong to the chosen subcategory should be displayed", async () => {
-    const subcategory = await homepage.categories.rootEl.$("label");
+    const subcategory = homepage.categories.firstSubcategory;
     expect(subcategory).to.not.be.undefined;
 
     const subcatName = await subcategory.getText();
