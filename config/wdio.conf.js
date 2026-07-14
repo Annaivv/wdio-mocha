@@ -25,7 +25,7 @@ export const config = {
       },
     ],
     [
-      "html",
+      "html-nice",
       {
         outputDir: "./reports/html-reports/",
         filename: "report.html",
