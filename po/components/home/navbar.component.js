@@ -44,4 +44,14 @@ export class Navbar extends BaseComponent {
   async getCartQuantity() {
     return await this.cartQuantity.getText();
   }
+
+  async getLanguageSelectText() {
+    return await this.languageSelect.getText();
+  }
+
+  async selectGermanLanguage() {
+    await this.languageSelect.click();
+    await this.languagesList.waitForDisplayed();
+    await this.languageGermanItem.click();
+  }
 }

@@ -9,14 +9,11 @@ describe("Language selection", () => {
 
   beforeEach(async () => {
     homepage = await pages("home").setupHomepage();
-    langSelect = homepage.navbar.languageSelect;
-    await langSelect.click();
-    await homepage.navbar.languagesList.waitForDisplayed();
-    await homepage.navbar.languageGermanItem.click();
+    await homepage.navbar.selectGermanLanguage();
   });
 
   it("Should show menu item names in German when DE is selected in the language selection dropdown", async () => {
-    expect(await langSelect.getText()).to.include("DE");
+    expect(await homepage.navbar.getLanguageSelectText()).to.include("DE");
 
     const navSignIn = homepage.navbar.navSignIn;
     const navSignInGerman = await waitForText(navSignIn, "Einloggen");
@@ -28,7 +25,7 @@ describe("Language selection", () => {
   });
 
   it("Should show Tool categories on the sidebar in English when DE is selected in the language selection dropdown", async () => {
-    expect(await langSelect.getText()).to.include("DE");
+    expect(await homepage.navbar.getLanguageSelectText()).to.include("DE");
 
     const titleTexts = await homepage.productList.getProductTitles();
 
