@@ -1,9 +1,7 @@
-import { should } from "chai";
+import { expect } from "chai";
 import { pages } from "../../po/pages";
 import { waitForText } from "../../helpers";
 import { expectedTitles } from "../../data/expectedTitles";
-
-should();
 
 describe("Language selection", () => {
   let homepage;
@@ -18,22 +16,24 @@ describe("Language selection", () => {
   });
 
   it("Should show menu item names in German when DE is selected in the language selection dropdown", async () => {
-    (await langSelect.getText()).should.contain("DE");
+    expect(await langSelect.getText()).to.include("DE");
 
     const navSignIn = homepage.navbar.navSignIn;
     const navSignInGerman = await waitForText(navSignIn, "Einloggen");
-    navSignInGerman.should.be.true;
+    expect(navSignInGerman).to.be.true;
 
     const navCategories = homepage.navbar.navCategories;
     const navCategoriesGerman = await waitForText(navCategories, "Kategorien");
-    navCategoriesGerman.should.be.true;
+    expect(navCategoriesGerman).to.be.true;
   });
 
-  it("Tool categories on the sidebar remain in English when DE is selected in the language selection dropdown", async () => {
-    (await langSelect.getText()).should.contain("DE");
+  it("Should show Tool categories on the sidebar in English when DE is selected in the language selection dropdown", async () => {
+    expect(await langSelect.getText()).to.include("DE");
 
     const titleTexts = await homepage.productList.getProductTitles();
 
-    expectedTitles.forEach((expected) => titleTexts.should.include(expected));
+    expectedTitles.forEach((expected) =>
+      expect(titleTexts).to.include(expected),
+    );
   });
 });
