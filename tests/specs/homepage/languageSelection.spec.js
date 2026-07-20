@@ -2,7 +2,6 @@ import { should } from "chai";
 import { pages } from "../../../po/pages";
 import { waitForText } from "../../../helpers";
 import { expectedTitles } from "../../../data/expectedTitles";
-import { setupHomepage } from "../../../helpers/setupHomepage";
 
 should();
 
@@ -11,7 +10,7 @@ describe("Language selection", () => {
   let langSelect;
 
   beforeEach(async () => {
-    homepage = await setupHomepage();
+    homepage = await pages("home").setupHomepage();
     langSelect = homepage.navbar.languageSelect;
     await langSelect.click();
     await homepage.navbar.languagesList.waitForDisplayed();
@@ -33,10 +32,7 @@ describe("Language selection", () => {
   it("Tool categories on the sidebar remain in English when DE is selected in the language selection dropdown", async () => {
     (await langSelect.getText()).should.contain("DE");
 
-    const testCardTitles = await homepage.productList.productTitles.slice(0, 3);
-    const titleTexts = await Promise.all(
-      testCardTitles.map((title) => title.getText()),
-    );
+    const titleTexts = await homepage.productList.getProductTitles();
 
     expectedTitles.forEach((expected) => titleTexts.should.include(expected));
   });

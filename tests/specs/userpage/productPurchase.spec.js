@@ -1,9 +1,7 @@
 import { expect, assert } from "chai";
-import { userData } from "../../../data/userData";
 import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { generateUniqueEmail, waitForUrl } from "../../../helpers";
+import { createTestUser, waitForUrl } from "../../../helpers";
 import { pages } from "../../../po/pages";
-import { setupHomepage } from "../../../helpers/setupHomepage";
 
 describe("Add product to cart", () => {
   let testUser;
@@ -11,14 +9,10 @@ describe("Add product to cart", () => {
   let homepage;
 
   before(async () => {
-    homepage = await setupHomepage();
+    homepage = await pages("home").setupHomepage();
     productList = homepage.productList;
-    testUser = {
-      ...userData,
-      email: generateUniqueEmail(),
-    };
+    testUser = createTestUser();
     await pages("signup").register(testUser);
-    //await pages("login").open();
     await pages("login").login(testUser);
   });
   it("Product should be in the cart when added by logged in user", async () => {
@@ -37,25 +31,20 @@ describe("Add product to cart", () => {
     const dataTest = await cards[1].getAttribute("data-test");
     const productID = dataTest.split("-")[1];
     const productUrl = `${PRODUCT_BASE_URL}/${productID}`;
-    const addProductSuccessMsg = $(
-      "//div[text()='Product added to shopping cart.']",
-    );
 
     await cards[1].click();
     const isUrlCorrect = await waitForUrl(productUrl);
-    assert.isTrue(isUrlCorrect);
+    expect(isUrlCorrect).to.be.true;
 
     const productPage = pages("product");
     await productPage.open(productID);
 
     await productPage.product.addToCartBtn.click();
-    assert.exists(addProductSuccessMsg);
+    expect(productPage.addToCartSuccessMsg).to.exist;
 
     const cart = homepage.navbar.shoppingCart;
     const cartQuantity = homepage.navbar.cartQuantity;
     const quantityText = await cartQuantity.getText();
-    assert.exists(cart);
-    assert.exists(cartQuantity);
-    assert.equal(quantityText, 1);
+    expect(quantityText).to.equal("1");
   });
 });

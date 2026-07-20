@@ -14,4 +14,9 @@ export class Homepage extends BasePage {
     this.search = new SearchComponent();
     this.categories = new CategoriesComponent();
   }
+
+  async setupHomepage() {
+    await this.open();
+    return this;
+  }
 }

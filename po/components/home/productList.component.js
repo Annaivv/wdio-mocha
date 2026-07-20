@@ -1,10 +1,15 @@
-export class ProductList {
+import { BaseComponent } from "../common/base.component";
+
+export class ProductList extends BaseComponent {
+  constructor() {
+    super("div.container[data-test]");
+  }
   get productCards() {
-    return $$("a.card");
+    return this.rootEl.$$("a.card");
   }
 
   get productTitles() {
-    return $$(".card-title");
+    return this.rootEl.$$(".card-title");
   }
 
   get listAfterSearch() {
@@ -13,5 +18,10 @@ export class ProductList {
 
   get listByCategories() {
     return $('div[data-test="filter_completed"]');
+  }
+
+  async getProductTitles() {
+    const titles = await this.productTitles.slice();
+    return Promise.all(titles.map((title) => title.getText()));
   }
 }
