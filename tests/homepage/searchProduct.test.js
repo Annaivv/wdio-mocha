@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { expectedTitles } from "../../../data/expectedTitles";
-import { pages } from "../../../po/pages";
-import { normalizeText } from "../../../helpers";
+import { expectedTitles } from "../../data/expectedTitles";
+import { pages } from "../../po/pages";
+import { normalizeText } from "../../helpers";
 
 describe("Product search", () => {
   let homepage;

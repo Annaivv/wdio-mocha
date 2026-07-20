@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../../data/constants";
-import { createTestUser, waitForUrl } from "../../../helpers";
-import { pages } from "../../../po/pages";
+import { PRODUCT_BASE_URL, USER_ACCOUNT_URL } from "../../data/constants";
+import { createTestUser, waitForUrl } from "../../helpers";
+import { pages } from "../../po/pages";
 
 describe("Add product to cart", () => {
   let testUser;
