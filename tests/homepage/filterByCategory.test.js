@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { pages } from "../../../po/pages";
-import { normalizeText } from "../../../helpers";
+import { pages } from "../../po/pages";
+import { normalizeText } from "../../helpers";
 
 describe("Filter products by category", () => {
   let homepage;

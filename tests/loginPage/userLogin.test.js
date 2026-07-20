@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { pages } from "../../../po/pages";
-import { USER_ACCOUNT_URL } from "../../../data/constants";
-import { waitForUrl, createTestUser } from "../../../helpers";
+import { pages } from "../../po/pages";
+import { USER_ACCOUNT_URL } from "../../data/constants";
+import { waitForUrl, createTestUser } from "../../helpers";
 
 describe("Registered user login", () => {
   let testUser;

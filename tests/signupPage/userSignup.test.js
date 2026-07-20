@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { pages } from "../../../po/pages";
-import { waitForUrl, createTestUser } from "../../../helpers";
-import { LOGIN_PAGE_URL, SIGNUP_PAGE_URL } from "../../../data/constants";
+import { pages } from "../../po/pages";
+import { waitForUrl, createTestUser } from "../../helpers";
+import { LOGIN_PAGE_URL, SIGNUP_PAGE_URL } from "../../data/constants";
 
 describe("New user signup", () => {
   let testUser;

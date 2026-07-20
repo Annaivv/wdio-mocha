@@ -8,10 +8,18 @@ export class ProductPage extends BasePage {
   }
 
   get addToCartSuccessMsg() {
-    return $("//div[text()='Product added to shopping cart.']");
+    return $("div*=added to shopping cart");
   }
 
   async open(productId) {
     await browser.url(`${this.url}/${productId}`);
+  }
+
+  async addProductToCart() {
+    await this.product.addToCartBtn.click();
+    await this.addToCartSuccessMsg.waitForExist({
+      timeout: 5000,
+      timeoutMsg: "Add to cart success message is not displayed",
+    });
   }
 }
