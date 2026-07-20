@@ -40,4 +40,8 @@ export class Navbar extends BaseComponent {
   get userMenu() {
     return this.rootEl.$('[data-test="nav-menu"]');
   }
+
+  async getCartQuantity() {
+    return await this.cartQuantity.getText();
+  }
 }
